@@ -22,7 +22,7 @@ class moveFiles():
         command = "%s%s" %(source, file)
         shutil.move(command, target)
         print("%s was moved." %file)
-        
+
     def main(self):
         """
         This method moves files based on the filename name and
@@ -60,6 +60,22 @@ class moveFiles():
                 if time_file > time_newest \
                    and self.match(doc['regex'], file):
                     time_newest = time_file
+                    name_file = file
+            if name_file != "":      
+                self.move(source, name_file, target)
+
+        elif doc["mode"] == 2 and doc["recent"] == False:
+            """
+            This mode moves the oldest file match in each period
+            """
+
+            time_oldest = time()
+            name_file = ""
+            for file in files:
+                time_file = os.path.getmtime('%s%s' %(source, file))
+                if time_file < time_oldest \
+                and self.match(doc['regex'], file):
+                    time_oldest = time_file
                     name_file = file
             if name_file != "":      
                 self.move(source, name_file, target)
