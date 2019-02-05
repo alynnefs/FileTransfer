@@ -1,0 +1,7 @@
+source: '/home/alynne/Documents/a/'
+target: '/home/alynne/Documents/b/'
+mode: 2
+recent: True
+period: 5
+regex: '(.*.rar)'
+# regex: '(cool.*)'
