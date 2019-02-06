@@ -1,3 +1,4 @@
+import errno
 import os
 import re
 import shutil
@@ -20,8 +21,15 @@ class moveFiles():
 
     def move(self, source, file, target):
         command = "%s%s" %(source, file)
-        shutil.move(command, target)
-        print("%s was moved." %file)
+        try:
+            shutil.move(command, target)
+            print("%s was moved." %file)
+        except IOError as e:
+            if e.errno != errno.ENOENT:
+                raise
+            os.makedirs(target)
+            shutil.move(command, target)
+            print("%s was moved." %file)
 
     def main(self):
         """
