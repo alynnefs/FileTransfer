@@ -45,7 +45,14 @@ class moveFiles():
         source = doc["source"]
         target = doc["target"]
 
-        files = os.listdir(source)
+        try:
+            files = os.listdir(source)
+        except IOError as e:
+            if e.errno != errno.ENOENT:
+                raise
+            os.makedirs(source)
+            files = os.listdir(source)
+            print("Directory %s was created." %source)
 
         if doc["mode"] == 1:
             """
