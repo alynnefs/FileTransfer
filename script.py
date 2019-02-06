@@ -1,8 +1,8 @@
 import os
-import shutil
 import re
-from time import sleep, time
+import shutil
 import yaml
+from time import sleep, time
 
 class moveFiles():
     """
