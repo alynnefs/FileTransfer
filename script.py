@@ -26,7 +26,7 @@ class moveFiles():
             print("%s was moved." %file)
         except IOError as e:
             if e.errno != errno.ENOENT:
-                raise
+                print(e)
             os.makedirs(target)
             shutil.move(command, target)
             print("%s was moved." %file)
@@ -49,7 +49,7 @@ class moveFiles():
             files = os.listdir(source)
         except IOError as e:
             if e.errno != errno.ENOENT:
-                raise
+                print(e)
             os.makedirs(source)
             files = os.listdir(source)
             print("Directory %s was created." %source)
