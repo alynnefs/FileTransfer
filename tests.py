@@ -19,7 +19,7 @@ class scriptTest(unittest.TestCase):
 
     def createDirectoryTarget(self):
         """
-        This method creates a folder named 'testes'
+        This method creates a folder named 'testes2'
         """
 
         os.mkdir('testes2')
@@ -37,7 +37,7 @@ class scriptTest(unittest.TestCase):
 
     def cleanSource(self):
         """
-        This method deletes 'testes' folder
+        This method deletes 'testes' folder (source folder)
         """
 
         shutil.rmtree('testes')
